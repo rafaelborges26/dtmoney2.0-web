@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Dialog from '@radix-ui/react-dialog'
 
 export const HeaderContainer = styled.header` //header vai pegar toda a width
     background: ${props => props.theme["gray-900"]};
@@ -16,7 +17,7 @@ export const HeaderContent = styled.div` //vai centralizar o conteudo dentro da 
     align-items: center;
 `
 
-export const NewTransactionButton = styled.button`
+export const NewTransactionButton = styled(Dialog.Trigger)`
     height: 50px;
     border: 0;
     background: ${props => props.theme["green-500"]};
