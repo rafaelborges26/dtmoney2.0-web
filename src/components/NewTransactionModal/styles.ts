@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { styled as styledStitches } from '@stitches/react'
+import { css } from 'styled-components'
 import { styled } from 'styled-components'
 
 export const Overlay = styledStitches(Dialog.Overlay, {
@@ -54,7 +55,7 @@ export const Form = styled.form`
         }
     }
 
-    button {
+    button[type="submit"] {
             height: 58px;
             border: 0;
             background: ${props => props.theme['green-500']};
@@ -70,4 +71,59 @@ export const Form = styled.form`
                 transition: background-color 0.2s;
             }
         }
+`
+
+export const TransactionType = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+`
+
+interface TransactionTypeButtonProps {
+ variant: 'income' | 'outcome'
+ isSelected: boolean
+}
+
+export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
+    background: ${props => props.theme['gray-700']};
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 0;
+    background: ${props => props.theme['gray-300']};
+
+    svg {
+        color: ${props => props.variant === 'income' ? props.theme['green-300'] : props.theme['red-300'] };
+    }
+
+    ${props => props.variant === 'income' && props.isSelected && css`
+        color: ${props => props.theme.white};
+        background: ${props => props.theme['green-500']};
+        
+        svg {
+            color: ${props => props.theme.white};
+        }
+    `}
+
+    ${props => props.variant === 'outcome' && props.isSelected && css`
+        color: ${props => props.theme.white};
+        background: ${props => props.theme['red-500']};
+        
+        svg {
+            color: ${props => props.theme.white};
+        }
+    `}
+    
+    ${props => !props.isSelected && css`
+        &:hover {
+            transition: background-color 0.2s;
+            background: ${props => props.theme['gray-600']};
+        }
+    `}
+    
 `

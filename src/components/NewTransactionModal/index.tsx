@@ -1,8 +1,11 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { Overlay, Content, Form, CloseButton } from './styles'
-import { X } from 'phosphor-react'
+import { Overlay, Content, Form, CloseButton, TransactionType, TransactionTypeButton } from './styles'
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { useState } from 'react'
+
 
 export function NewTransactionModal() {
+    const [isChecked, setIsChecked] = useState<null | 'income' | 'outcome'>(null)
     return (
         <Dialog.Portal> {/*Portal = abrir em outro elemento, sair do Header um "display absolute"*/}
             <Overlay /> {/*Abaixar a opacidade*/}
@@ -15,6 +18,25 @@ export function NewTransactionModal() {
                     <input type='text' placeholder='Descrição'  required/>
                     <input type='number' placeholder='Preço'  required/>
                     <input type='text' placeholder='Categoria'  required/>
+
+                    <TransactionType>
+                    <TransactionTypeButton 
+                        variant='income' 
+                        onClick={() => setIsChecked('income')} 
+                        isSelected={isChecked === 'income'}
+                    >
+                        <ArrowCircleUp size={24} />
+                        Entrada
+                    </TransactionTypeButton>
+                    <TransactionTypeButton 
+                        variant='outcome' 
+                        onClick={() => setIsChecked('outcome')} 
+                        isSelected={isChecked === 'outcome'}
+                    >
+                        <ArrowCircleDown size={24} />
+                        Saída
+                    </TransactionTypeButton>
+                    </TransactionType>
 
                     <button type='submit'>
                         Cadastrar
