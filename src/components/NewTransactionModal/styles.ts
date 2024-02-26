@@ -95,7 +95,7 @@ export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     border-radius: 6px;
     cursor: pointer;
     border: 0;
-    background: ${props => props.theme['gray-300']};
+    color: ${props => props.theme['gray-300']};
 
     svg {
         color: ${props => props.variant === 'income' ? props.theme['green-300'] : props.theme['red-300'] };
@@ -104,16 +104,15 @@ export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     ${props => props.variant === 'income' && props.isSelected && css`
         color: ${props => props.theme.white};
         background: ${props => props.theme['green-500']};
-        
         svg {
             color: ${props => props.theme.white};
         }
     `}
 
-    ${props => props.variant === 'outcome' && props.isSelected && css`
+    
+    ${props => props.variant === 'outcome' && !!props.isSelected && css`
         color: ${props => props.theme.white};
         background: ${props => props.theme['red-500']};
-        
         svg {
             color: ${props => props.theme.white};
         }
@@ -125,5 +124,6 @@ export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
             background: ${props => props.theme['gray-600']};
         }
     `}
+    
     
 `

@@ -22,6 +22,7 @@ export function NewTransactionModal() {
                     <TransactionType>
                     <TransactionTypeButton 
                         variant='income' 
+                        type='button' 
                         onClick={() => setIsChecked('income')} 
                         isSelected={isChecked === 'income'}
                     >
@@ -29,7 +30,8 @@ export function NewTransactionModal() {
                         Entrada
                     </TransactionTypeButton>
                     <TransactionTypeButton 
-                        variant='outcome' 
+                        variant='outcome'
+                        type='button' 
                         onClick={() => setIsChecked('outcome')} 
                         isSelected={isChecked === 'outcome'}
                     >
