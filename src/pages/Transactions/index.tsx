@@ -2,6 +2,7 @@ import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
 import { SearchForm } from './Components/SearchForm'
 import {
+  ButtonClose,
   PriceHighLight,
   TransactionContainer,
   TransactionsTable,
@@ -9,6 +10,7 @@ import {
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import { useContextSelector } from 'use-context-selector'
+import { X } from 'phosphor-react'
 
 export interface ITransaction {
   id: number
@@ -20,9 +22,13 @@ export interface ITransaction {
 }
 
 export function Transactions() {
-  const transactions = useContextSelector(TransactionsContext, (context) => {
-    return context.transactions
-  })
+  const { transactions, removeTransaction } = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context
+    },
+  )
+
   return (
     <div>
       <Header />
@@ -46,6 +52,15 @@ export function Transactions() {
                   <td>{transaction.category}</td>
                   <td>
                     {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
+                  <td>
+                    <ButtonClose
+                      onClick={() =>
+                        removeTransaction(transaction.id.toString())
+                      }
+                    >
+                      <X size={24} />
+                    </ButtonClose>
                   </td>
                 </tr>
               )

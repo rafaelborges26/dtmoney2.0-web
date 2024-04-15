@@ -29,6 +29,24 @@ export const TransactionsTable = styled.table`
   }
 `
 
+export const ButtonClose = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    svg {
+      color: ${(props) => props.theme['gray-300']};
+      transition: background-color 0.2s;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+`
+
 interface PriceHighLightProps {
   variant: 'income' | 'outcome'
 }

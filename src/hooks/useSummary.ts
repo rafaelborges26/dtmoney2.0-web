@@ -24,6 +24,7 @@ export function useSammary() {
       total: 0,
     },
   )
+  // agora essa função só vai ser recriada se o transaction mudar, independente se o componente Summary mudar, antes estava sendo calculada toda ves que tinha mudança do zero
 
   return summary
 }

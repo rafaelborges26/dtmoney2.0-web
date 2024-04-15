@@ -15,6 +15,7 @@ interface TransactionContextType {
   fetchTransactions: () => Promise<void>
   queryTransactions: (query: string) => Promise<void>
   createTransaction: (data: ICreateTransaction) => Promise<void>
+  removeTransaction: (id: string) => Promise<void>
 }
 
 interface TransactionProviderProps {
@@ -82,6 +83,14 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     setTransactions((state) => [response.data, ...state])
   }, [])
 
+  const removeTransaction = useCallback(async (id: string) => {
+    const response = await api.delete(`transactions/${id}`)
+
+    console.log(response, 'response')
+
+    fetchTransactions()
+  }, [])
+
   useEffect(() => {
     fetchTransactions()
   }, [])
@@ -93,6 +102,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
         fetchTransactions,
         queryTransactions,
         createTransaction,
+        removeTransaction,
       }}
     >
       {children}
