@@ -34,3 +34,32 @@ export const NewTransactionButton = styled(Dialog.Trigger)`
     transition: background-color 0.2s;
   }
 `
+
+export const ButtonGoogle = styled.button`
+  font-size: 14px;
+  font-weight: 600;
+  color: ${(props) => props.theme['gray-700']};
+
+  height: 2rem;
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+  align-items: center;
+  cursor: pointer;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: ${(props) => props.theme['green-500']};
+  transition: background-color 0.2s;
+
+  &:hover {
+    transition: background-color 0.2s;
+    background: ${(props) => props.theme['green-300']};
+  }
+
+  img {
+    margin-right: 8px;
+  }
+`

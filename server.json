@@ -143,6 +143,30 @@
       "type": "outcome",
       "createdAt": "2024-04-15T23:16:15.414Z",
       "id": 26
+    },
+    {
+      "description": "Colírio",
+      "category": "Saúde",
+      "price": 35,
+      "type": "outcome",
+      "createdAt": "2024-04-16T22:42:46.161Z",
+      "id": 27
+    },
+    {
+      "description": "Conta do toby Remedios",
+      "category": "Gatos",
+      "price": 300,
+      "type": "outcome",
+      "createdAt": "2024-04-16T22:43:44.947Z",
+      "id": 28
+    },
+    {
+      "description": "Seguro",
+      "category": "Contas",
+      "price": 500,
+      "type": "outcome",
+      "createdAt": "2024-04-16T22:45:15.281Z",
+      "id": 29
     }
   ]
 }

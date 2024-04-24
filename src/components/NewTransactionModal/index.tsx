@@ -55,6 +55,7 @@ export function NewTransactionModal() {
     })
 
     reset()
+    setIsChecked(null)
   }
 
   useEffect(() => {
@@ -63,7 +64,6 @@ export function NewTransactionModal() {
 
   return (
     <Dialog.Portal>
-      {' '}
       {/* Portal = abrir em outro elemento, sair do Header um "display absolute" */}
       <Overlay /> {/* Abaixar a opacidade */}
       <Content>
