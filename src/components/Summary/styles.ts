@@ -11,6 +11,11 @@ export const SummaryContainer = styled.section`
   gap: 2rem;
 
   margin-top: -5rem;
+
+  @media (max-width: 600px) {
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
 `
 
 interface SummaryCardProps {
@@ -21,6 +26,10 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   background: ${(props) => props.theme['gray-600']};
   border-radius: 6px;
   padding: 2rem;
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 
   header {
     display: flex;
@@ -33,6 +42,10 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     display: block;
     margin-top: 1rem;
     font-size: 2rem;
+
+    @media (max-width: 600px) {
+      font-size: 1rem;
+    }
   }
 
   ${(props) =>

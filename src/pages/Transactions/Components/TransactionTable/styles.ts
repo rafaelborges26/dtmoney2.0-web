@@ -58,4 +58,8 @@ export const TextEmpty = styled.span`
   justify-content: center;
   margin-top: 2rem;
   font-size: 1.5rem;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `
