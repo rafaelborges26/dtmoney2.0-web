@@ -1,0 +1,8 @@
+{
+  "rules": {
+		"transactions": {
+      ".read": true,
+    	".write": "auth.uid == 'skVtB4iz6WQf5VM3qwFkKvyWomk1' || auth.uid == 'w9zVWo1rKDN0gyopGkW1w3VeNb03'"
+    }
+  }
+}

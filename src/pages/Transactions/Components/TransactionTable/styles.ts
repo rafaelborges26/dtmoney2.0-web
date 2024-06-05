@@ -50,3 +50,12 @@ export const PriceHighLight = styled.span<PriceHighLightProps>`
       ? props.theme['green-300']
       : props.theme['red-300']};
 `
+
+export const TextEmpty = styled.span`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+`

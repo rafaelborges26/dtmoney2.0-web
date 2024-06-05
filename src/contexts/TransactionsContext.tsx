@@ -40,20 +40,27 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     if (transactionRef) {
       const allTransactions: ITransaction[] = transactionRef.val()
 
-      const parsedTansactions = Object.entries(allTransactions).map(
-        ([key, value]) => {
-          return {
-            id: key,
-            description: value.description,
-            category: value.category,
-            price: value.price,
-            type: value.type,
-            createdDate: value.createdDate,
-          }
-        },
+      const parsedTansactions = Object.entries<ITransaction>(
+        allTransactions,
+      ).map(([key, value]) => {
+        return {
+          id: key,
+          description: value.description,
+          category: value.category,
+          price: value.price,
+          type: value.type,
+          createdDate: value.createdDate,
+          userId: value.userId,
+        }
+      })
+
+      const filteredTransaction = parsedTansactions.filter(
+        (transaction) => transaction.userId === user?.id,
       )
-      console.log(parsedTansactions, 'parsedTansactions')
-      setTransactions(parsedTansactions)
+
+      console.log(filteredTransaction, 'filteredTransaction')
+
+      setTransactions(filteredTransaction)
     }
   }, [])
 

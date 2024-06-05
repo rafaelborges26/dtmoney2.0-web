@@ -11,6 +11,7 @@ export interface ITransaction {
   price: number
   category: string
   createdDate: string
+  userId: string
 }
 
 export function Transactions() {

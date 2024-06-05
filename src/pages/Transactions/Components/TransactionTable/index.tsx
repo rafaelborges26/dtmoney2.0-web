@@ -1,5 +1,5 @@
 import { useContextSelector } from 'use-context-selector'
-import { ButtonClose, PriceHighLight, Table } from './styles'
+import { ButtonClose, PriceHighLight, Table, TextEmpty } from './styles'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 import { dateFormatter, priceFormatter } from '../../../../utils/formatter'
 import { X } from 'phosphor-react'
@@ -44,7 +44,11 @@ export function TransactionsTable() {
           </tbody>
         </Table>
       ) : (
-        <div>vazio</div>
+        <div>
+          <TextEmpty>
+            Ainda não há transações. Por favor, adicione uma nova.
+          </TextEmpty>
+        </div>
       )}
     </>
   )
