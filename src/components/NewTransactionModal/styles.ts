@@ -1,6 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { styled as styledStitches } from '@stitches/react'
 import { css, styled } from 'styled-components'
+import { getWidthDimensions } from '../../utils/getDimensions'
+
+const { screenWidth } = getWidthDimensions()
 
 export const Overlay = styledStitches(Dialog.Overlay, {
   position: 'fixed',
@@ -11,7 +14,7 @@ export const Overlay = styledStitches(Dialog.Overlay, {
 })
 
 export const Content = styledStitches(Dialog.Content, {
-  minWidth: '32rem',
+  minWidth: screenWidth > 600 ? '32rem' : '22rem',
   borderRadius: '6px',
   padding: '2.5rem 3rem',
 

@@ -57,12 +57,9 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
       const filteredTransaction = parsedTansactions.filter(
         (transaction) => transaction.userId === user?.id,
       )
-
-      console.log(filteredTransaction, 'filteredTransaction')
-
       setTransactions(filteredTransaction)
     }
-  }, [])
+  }, [user])
 
   const queryTransactions = useCallback(async (query: string) => {
     const response = await api.get('transactions', {
@@ -76,7 +73,6 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     const responseDescriptionData = response.data
 
     if (responseDescriptionData.length > 0) {
-      console.log(responseDescriptionData, 'responseDescriptionData')
       setTransactions(response.data)
     }
 
@@ -101,7 +97,6 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 
       const createdDate = new Date().toISOString()
 
-      console.log(createdDate, 'createdDate')
       try {
         const transactionRef = database.ref('transactions')
 

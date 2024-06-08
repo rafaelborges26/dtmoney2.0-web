@@ -28,7 +28,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   padding: 2rem;
 
   @media (max-width: 600px) {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   header {

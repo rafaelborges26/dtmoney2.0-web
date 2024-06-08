@@ -24,7 +24,7 @@ export function Header() {
       <HeaderContent>
         <img src={LogoImg} alt="" />
 
-        {user ? (
+        {user?.id ? (
           <Dialog.Root>
             <NewTransactionButton>Nova transação</NewTransactionButton>
             <NewTransactionModal />
