@@ -1,5 +1,15 @@
 import styled from 'styled-components'
 
+export const ContainerTransaction = styled.div`
+  overflow-x: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.25rem;
+    background-color: transparent;
+  }
+`
+
 export const Table = styled.table`
   width: 100%;
   border-collapse: separate;

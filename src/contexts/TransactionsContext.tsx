@@ -114,24 +114,29 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 
       fetchTransactions()
     },
-    [user],
+    [user, fetchTransactions],
   )
 
-  const removeTransaction = useCallback(async (id: string) => {
-    // const response = await api.delete(`transactions/${id}`)
+  const removeTransaction = useCallback(
+    async (id: string) => {
+      try {
+        await database.ref(`/transactions/${id}`).remove()
 
-    try {
-      await database.ref(`/transactions/${id}`).remove()
-    } catch (error) {
-      alert('Ocorreu um erro com a tentativa de exclusão')
-    }
-
-    fetchTransactions()
-  }, [])
+        const transactionUpdated = transactions.filter(
+          (transaction) => transaction.id !== id,
+        )
+        setTransactions(transactionUpdated)
+      } catch (error) {
+        alert('Ocorreu um erro com a tentativa de exclusão')
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [transactions],
+  )
 
   useEffect(() => {
-    fetchTransactions()
-  }, [])
+    if (user) fetchTransactions()
+  }, [user, fetchTransactions])
 
   return (
     <TransactionsContext.Provider

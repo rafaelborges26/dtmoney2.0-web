@@ -1,5 +1,11 @@
 import { useContextSelector } from 'use-context-selector'
-import { ButtonClose, PriceHighLight, Table, TextEmpty } from './styles'
+import {
+  ButtonClose,
+  PriceHighLight,
+  Table,
+  ContainerTransaction,
+  TextEmpty,
+} from './styles'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 import { dateFormatter, priceFormatter } from '../../../../utils/formatter'
 import { X } from 'phosphor-react'
@@ -11,9 +17,8 @@ export function TransactionsTable() {
       return context
     },
   )
-  console.log(transactions, 'transactions')
   return (
-    <>
+    <ContainerTransaction>
       {transactions.length > 0 ? (
         <Table>
           <tbody>
@@ -50,6 +55,6 @@ export function TransactionsTable() {
           </TextEmpty>
         </div>
       )}
-    </>
+    </ContainerTransaction>
   )
 }

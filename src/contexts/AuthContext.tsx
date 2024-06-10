@@ -46,6 +46,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // verifica se já estava autenticado
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user.uid, 'user signin')
         const { displayName, photoURL, uid } = user
 
         if (!displayName || !photoURL) {
