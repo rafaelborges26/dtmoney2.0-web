@@ -17,6 +17,13 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > img {
+    @media (max-width: 600px) {
+      width: 8rem;
+      height: 4rem;
+    }
+  }
 `
 
 export const NewTransactionButton = styled(Dialog.Trigger)`
@@ -61,5 +68,17 @@ export const ButtonGoogle = styled.button`
 
   img {
     margin-right: 8px;
+
+    @media (max-width: 600px) {
+      width: 12px;
+      height: 12px;
+      margin-right: 4px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    width: 6rem;
+    height: 1rem;
+    font-size: 8px;
   }
 `

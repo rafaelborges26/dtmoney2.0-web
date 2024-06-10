@@ -13,8 +13,15 @@ export const SummaryContainer = styled.section`
   margin-top: -5rem;
 
   @media (max-width: 600px) {
-    padding: 0 0.5rem;
     gap: 1rem;
+
+    overflow-x: scroll;
+
+    ::-webkit-scrollbar {
+      width: 0.5em;
+      height: 0.25rem;
+      background-color: transparent;
+    }
   }
 `
 

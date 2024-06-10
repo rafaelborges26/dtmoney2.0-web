@@ -18,36 +18,38 @@ export function TransactionsTable() {
     },
   )
   return (
-    <ContainerTransaction>
+    <>
       {transactions.length > 0 ? (
-        <Table>
-          <tbody>
-            {transactions.map((transaction) => {
-              return (
-                <tr key={transaction.id}>
-                  <td width={'40%'}>{transaction.description}</td>
-                  <td>
-                    <PriceHighLight variant={transaction.type}>
-                      {transaction.type === 'outcome' && '- '}
-                      {priceFormatter.format(transaction.price)}
-                    </PriceHighLight>
-                  </td>
-                  <td>{transaction.category}</td>
-                  <td>
-                    {dateFormatter.format(new Date(transaction.createdDate))}
-                  </td>
-                  <td>
-                    <ButtonClose
-                      onClick={() => removeTransaction(transaction.id)}
-                    >
-                      <X size={24} />
-                    </ButtonClose>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </Table>
+        <ContainerTransaction>
+          <Table>
+            <tbody>
+              {transactions.map((transaction) => {
+                return (
+                  <tr key={transaction.id}>
+                    <td width={'40%'}>{transaction.description}</td>
+                    <td>
+                      <PriceHighLight variant={transaction.type}>
+                        {transaction.type === 'outcome' && '- '}
+                        {priceFormatter.format(transaction.price)}
+                      </PriceHighLight>
+                    </td>
+                    <td>{transaction.category}</td>
+                    <td>
+                      {dateFormatter.format(new Date(transaction.createdDate))}
+                    </td>
+                    <td>
+                      <ButtonClose
+                        onClick={() => removeTransaction(transaction.id)}
+                      >
+                        <X size={24} />
+                      </ButtonClose>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
+        </ContainerTransaction>
       ) : (
         <div>
           <TextEmpty>
@@ -55,6 +57,6 @@ export function TransactionsTable() {
           </TextEmpty>
         </div>
       )}
-    </ContainerTransaction>
+    </>
   )
 }
