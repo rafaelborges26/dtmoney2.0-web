@@ -14,6 +14,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
+import { toast } from 'sonner'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -25,11 +26,11 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-  const createTransaction = useContextSelector(
+  const { createTransaction, transactions } = useContextSelector(
     // consumindo o selector para selecionar o que do contexto eu estou utilizando (createContext) para evitar reenderizar quando a propriedade de transactions atualizar
     TransactionsContext,
     (context) => {
-      return context.createTransaction
+      return context
     },
   )
   const {
@@ -47,6 +48,15 @@ export function NewTransactionModal() {
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { description, category, price, type } = data
 
+    if (transactions.length >= 50) {
+      toast.error('Limite de transações atingida.', {
+        position: 'top-right',
+      })
+
+      resetForm()
+      return
+    }
+
     await createTransaction({
       description,
       category,
@@ -54,6 +64,10 @@ export function NewTransactionModal() {
       type,
     })
 
+    resetForm()
+  }
+
+  const resetForm = () => {
     reset()
     setIsChecked(null)
   }

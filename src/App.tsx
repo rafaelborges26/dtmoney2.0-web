@@ -4,6 +4,7 @@ import { GlobalStyle } from './styles/global'
 import { Transactions } from './pages/Transactions'
 import { TransactionsProvider } from './contexts/TransactionsContext'
 import { AuthProvider } from './contexts/AuthContext'
+import { Toaster } from 'sonner'
 
 export function App() {
   return (
@@ -11,6 +12,7 @@ export function App() {
       <GlobalStyle />
       <AuthProvider>
         <TransactionsProvider>
+          <Toaster richColors />
           <Transactions />
         </TransactionsProvider>
       </AuthProvider>
