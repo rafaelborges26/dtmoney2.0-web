@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState, useCallback } from 'react'
 import { ITransaction } from '../pages/Transactions'
-import { api } from '../lib/axios'
 import { createContext, useContextSelector } from 'use-context-selector'
 import { database } from '../services/firebase'
 import { AuthContext } from '../contexts/AuthContext'
@@ -61,35 +60,18 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     }
   }, [user])
 
-  const queryTransactions = useCallback(async (query: string) => {
-    const response = await api.get('transactions', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        description: query,
-      },
-    })
+  const queryTransactions = useCallback(
+    async (query: string) => {
+      const transactionFiltered = transactions.filter((transaction) =>
+        query.toUpperCase().includes(transaction.description.toUpperCase()),
+      )
 
-    const responseDescriptionData = response.data
-
-    if (responseDescriptionData.length > 0) {
-      setTransactions(response.data)
-    }
-
-    const responseCategory = await api.get('transactions', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        category: query,
-      },
-    })
-
-    const responseCategoryData = responseCategory.data
-
-    if (responseCategoryData.length > 0) {
-      setTransactions(responseCategory.data)
-    }
-  }, [])
+      if (transactionFiltered) {
+        setTransactions(transactionFiltered)
+      }
+    },
+    [transactions],
+  )
 
   const createTransaction = useCallback(
     async (data: ICreateTransaction) => {
