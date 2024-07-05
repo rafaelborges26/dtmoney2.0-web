@@ -36,6 +36,7 @@ export function NewTransactionModal() {
   const {
     register,
     handleSubmit,
+    getValues,
     setValue,
     reset,
     formState: { isSubmitting },
@@ -44,6 +45,9 @@ export function NewTransactionModal() {
   })
 
   const [isChecked, setIsChecked] = useState<null | 'income' | 'outcome'>(null)
+
+  const isDisabledButton =
+    !getValues('category') || !getValues('description') || !getValues('price')
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { description, category, price, type } = data
@@ -126,7 +130,7 @@ export function NewTransactionModal() {
             </TransactionTypeButton>
           </TransactionType>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting || isDisabledButton}>
             Cadastrar
           </button>
         </Form>
