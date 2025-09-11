@@ -9,6 +9,7 @@ import {
   CloseButton,
   TransactionType,
   TransactionTypeButton,
+  Select
 } from './styles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -102,12 +103,19 @@ export function NewTransactionModal() {
             placeholder="Preço"
             required
           />
-          <input
-            {...register('category')}
-            type="text"
-            placeholder="Categoria"
-            required
-          />
+          <Select {...register("category", { required: true })} defaultValue="">
+  <option value="" disabled>
+    Selecione uma categoria
+  </option>
+  <option value="lazer">Lazer</option>
+  <option value="contas">Contas</option>
+  <option value="alimentacao">Alimentação</option>
+  <option value="transporte">Transporte</option>
+  <option value="investimentos">Investimentos</option>
+</Select>
+
+
+          
 
           <TransactionType>
             <TransactionTypeButton
