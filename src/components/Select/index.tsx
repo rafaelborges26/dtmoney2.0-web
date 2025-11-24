@@ -1,7 +1,7 @@
 // src/components/SelectField/SelectField.tsx
 import { FC } from "react"
 import { SelectWrapper, Label, Select } from "./styles"
-import { TransactionType } from "../../types/transactionTypes"
+import { TransactionTypes } from "../../types/transactionTypes"
 
 interface SelectFieldProps {
   label?: string
@@ -30,7 +30,7 @@ export const SelectField: FC<SelectFieldProps> = ({
         <option value="" disabled>
           Selecione uma categoria
         </option>
-        {Object.values(TransactionType).map((type) => (
+        {Object.values(TransactionTypes).map((type) => (
           <option key={type} value={type}>
             {type}
           </option>

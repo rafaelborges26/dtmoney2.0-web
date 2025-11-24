@@ -11,7 +11,7 @@ const COLORS = [
   '#4ADE80', // verde limão
   '#38BDF8', // azul água claro
 ];
-export function ExpensePieChart({ data }) {
+export function ExpensePieChart({ data }: { data: { value: number; type: string }[] }) {
 
   return (
     <Container>
@@ -28,7 +28,7 @@ export function ExpensePieChart({ data }) {
             innerRadius={64}
             strokeWidth={6}
             labelLine={false}
-            label={({ cx, cy, midAngle, innerRadius, outerRadius, value, index }) => {
+            label={({ cx, cy, midAngle=0, innerRadius, outerRadius, value, index }) => {
               const RADIAN = Math.PI / 180
               const radius = 12 + innerRadius + (outerRadius - innerRadius)
               const x = cx + radius * Math.cos(-midAngle * RADIAN)
