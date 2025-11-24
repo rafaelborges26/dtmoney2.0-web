@@ -18,6 +18,8 @@ interface TransactionContextType {
   queryTransactions: (query: string) => Promise<void>
   createTransaction: (data: ICreateTransaction) => Promise<void>
   removeTransaction: (id: string) => Promise<void>
+  countTransactionsCategory: (category: string) => number
+  
 }
 
 interface TransactionProviderProps {
@@ -72,6 +74,24 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     },
     [transactions],
   )
+
+  const countTransactionsCategory = useCallback(
+    (category: string): number => {
+      const transactionFiltered = transactions.filter((transaction) =>
+        category.toUpperCase().includes(transaction.category.toUpperCase()),
+      )
+
+      
+      const totalTransactionCategory = transactionFiltered.reduce(
+        (sum, transaction) => sum + transaction.price,
+        0,
+      )
+
+      return totalTransactionCategory
+    },
+    [transactions],
+  )
+
 
   const createTransaction = useCallback(
     async (data: ICreateTransaction) => {
@@ -128,6 +148,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
         queryTransactions,
         createTransaction,
         removeTransaction,
+        countTransactionsCategory
       }}
     >
       {children}

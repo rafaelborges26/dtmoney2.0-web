@@ -16,6 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
 import { toast } from 'sonner'
+import { TransactionTypes } from '../../types/transactionTypes'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -103,16 +104,17 @@ export function NewTransactionModal() {
             placeholder="Preço"
             required
           />
+
           <Select {...register("category", { required: true })} defaultValue="">
-  <option value="" disabled>
-    Selecione uma categoria
-  </option>
-  <option value="lazer">Lazer</option>
-  <option value="contas">Contas</option>
-  <option value="alimentacao">Alimentação</option>
-  <option value="transporte">Transporte</option>
-  <option value="investimentos">Investimentos</option>
-</Select>
+            <option value="" disabled>
+              Selecione uma categoria
+            </option>
+            {TransactionTypes.map((type) => (
+              <option key={type} value={type}>
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </option>
+            ))}
+          </Select>
 
 
           
