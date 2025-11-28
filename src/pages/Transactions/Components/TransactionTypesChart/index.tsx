@@ -10,6 +10,8 @@ const COLORS = [
   '#F472B6', // rosa vibrante
   '#4ADE80', // verde limão
   '#38BDF8', // azul água claro
+  '#FB7185', // rosa avermelhado
+  '#C084FC', // roxo neon claro
 ];
 export function ExpensePieChart({ data }: { data: { value: number; type: string }[] }) {
 

@@ -8,6 +8,8 @@ export enum TransactionTypeEnum {
   SAUDE = "Saúde",
   ASSINATURAS = "Assinaturas",
   SALARIO = "Salário",
+  CARTAO = "Cartão",
+  AUTOMOVEL = "Automóvel",
 }
 
 export const TransactionTypesOut = [
@@ -19,6 +21,8 @@ export const TransactionTypesOut = [
     TransactionTypeEnum.PETS,
     TransactionTypeEnum.SAUDE,
     TransactionTypeEnum.ASSINATURAS,
+    TransactionTypeEnum.CARTAO,
+    TransactionTypeEnum.AUTOMOVEL,
   ]
 
   export const TransactionTypesIn = [
